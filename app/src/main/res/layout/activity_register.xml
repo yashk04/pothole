@@ -35,7 +35,7 @@
         android:inputType="textPassword"
         android:hint="Confirm Password"/>
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_llregister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -50,7 +50,7 @@
         android:layout_marginLeft="115dp"
         android:layout_marginTop="28dp"
         android:text="Citizen"
-        android:layout_below="@id/btn_register"
+        android:layout_below="@id/btn_llregister"
         app:layout_constraintStart_toStartOf="parent"/>
     <CheckBox
         android:id="@+id/checkBoxContractor"
@@ -59,7 +59,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="28dp"
         android:text="Contractor"
-        android:layout_below="@id/btn_register"
+        android:layout_below="@id/btn_llregister"
         android:layout_toRightOf="@id/checkBoxCitizen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxCitizen"

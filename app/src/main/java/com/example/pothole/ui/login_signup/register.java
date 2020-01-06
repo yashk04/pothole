@@ -25,10 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class register extends AppCompatActivity {
     CheckBox userCheckBox;
-    CheckBox citizenCheckBox;
-    EditText username=null,password=null,cpassword=null;
+    CheckBox contractorCheckBox;
+    EditText username,password,cpassword;
     String   category=null;
-    Button   btn_register;
+    Button   btn_register_here;
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
     ProgressDialog progressDialog;
@@ -39,24 +39,38 @@ public class register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         userCheckBox = (CheckBox)findViewById(R.id.checkBoxCitizen);
-        citizenCheckBox = (CheckBox)findViewById(R.id.checkBoxContractor);
-        username  = (EditText)findViewById(R.id.et_lusername);
+        contractorCheckBox = (CheckBox)findViewById(R.id.checkBoxContractor);
+        username  = (EditText)findViewById(R.id.et_username);
         password  = (EditText)findViewById(R.id.et_password);
         cpassword = (EditText)findViewById(R.id.et_cpassword);
-        btn_register = (Button)findViewById(R.id.btn_register);
+        btn_register_here = (Button)findViewById(R.id.btn_llregister);
 
         progressDialog = new ProgressDialog(getApplicationContext());
         progressDialog.setMessage("Registration In Process...");
 
         mAuth = FirebaseAuth.getInstance();
 
-        final String emailstr      =(username).getText().toString().trim();
-        final String passwordstr   =(password).getText().toString().trim();
-        final String conpasswordstr=(cpassword).getText().toString().trim();
-
-        btn_register.setOnClickListener(new View.OnClickListener() {
+        userCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                contractorCheckBox.setChecked(false);
+            }
+        });
+
+        contractorCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userCheckBox.setChecked(false);
+            }
+        });
+
+
+        btn_register_here.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String emailstr      =(username).getText().toString().trim();
+                final String passwordstr   =(password).getText().toString().trim();
+                final String conpasswordstr=(cpassword).getText().toString().trim();
                 if (TextUtils.isEmpty(emailstr)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
@@ -71,21 +85,25 @@ public class register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(!passwordstr.equals(conpasswordstr)){
+                    Toast.makeText(getApplicationContext(), "Both the Passwords should be same!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(userCheckBox.isChecked())
                     category = "user";
-                else if(citizenCheckBox.isChecked())
+                else if(contractorCheckBox.isChecked())
                     category = "contractor";
                 else{
                     Toast.makeText(getApplicationContext(),"Please Select Category",Toast.LENGTH_LONG).show();
                     return;
                 }
-                progressDialog.show();
+
 
                 mAuth.createUserWithEmailAndPassword(emailstr, passwordstr)
                         .addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(register.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
 
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
@@ -94,21 +112,21 @@ public class register extends AppCompatActivity {
                                     Toast.makeText(register.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    Toast.makeText(register.this, "createUserWithEmail:onComplete:", Toast.LENGTH_SHORT).show();
                                     if(category.equals("user")) {
                                         reference = FirebaseDatabase.getInstance().getReference().child("user");
-                                        reference.child("uid").setValue(mAuth.getCurrentUser().getUid());
+                                        (reference.child(FirebaseAuth.getInstance().getUid())).child("email").setValue(emailstr);
                                     }
                                     else{
-                                        reference = FirebaseDatabase.getInstance().getReference().child("user");
-                                        reference.child("uid").setValue(mAuth.getCurrentUser().getUid());
+                                        reference = FirebaseDatabase.getInstance().getReference().child("contractor");
+                                        (reference.child(FirebaseAuth.getInstance().getUid())).child("email").setValue(emailstr);
                                     }
-                                    progressDialog.dismiss();
-                                    startActivity(new Intent(register.this, login.class));
+
+                                    startActivity(new Intent(getApplicationContext(), login.class));
                                     finish();
                                 }
                             }
                         });
-
 
 
 

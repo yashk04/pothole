@@ -1130,8 +1130,8 @@ id bottom
 id btnNearMe
 id btnReportedMe
 id btn_llogin
+id btn_llregister
 id btn_lregister
-id btn_register
 id btnimage
 id btnsubmit
 id buttonPanel

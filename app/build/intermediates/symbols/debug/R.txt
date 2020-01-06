@@ -1129,8 +1129,8 @@ int id bottom 0x7f080024
 int id btnNearMe 0x7f080025
 int id btnReportedMe 0x7f080026
 int id btn_llogin 0x7f080027
-int id btn_lregister 0x7f080028
-int id btn_register 0x7f080029
+int id btn_llregister 0x7f080028
+int id btn_lregister 0x7f080029
 int id btnimage 0x7f08002a
 int id btnsubmit 0x7f08002b
 int id buttonPanel 0x7f08002c
