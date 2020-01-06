@@ -2,6 +2,7 @@ package com.example.pothole.ui.image;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +57,7 @@ public class ImageFragment extends Fragment {
     byte[] byteArray;
     String resp = null;
     Socket s = new Socket();
+    ProgressDialog progressDialog = null;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         imageViewModel =ViewModelProviders.of(this).get(ImageViewModel.class);
         View root = inflater.inflate(R.layout.fragment_image, container, false);
@@ -100,15 +103,13 @@ public class ImageFragment extends Fragment {
         {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"Have Patience Boy",Toast.LENGTH_SHORT).show();
 
-
-                try {
+               try {
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
                     byte[] byteArray = stream.toByteArray();
 
-                    Connectivity c = new Connectivity();
+                    Connectivity c = new Connectivity(getContext());
                     c.execute(byteArray);
                 }
                 catch(Exception e)
