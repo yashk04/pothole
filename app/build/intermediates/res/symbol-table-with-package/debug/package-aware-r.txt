@@ -1129,6 +1129,9 @@ id blocking
 id bottom
 id btnNearMe
 id btnReportedMe
+id btn_llogin
+id btn_lregister
+id btn_register
 id btnimage
 id btnsubmit
 id buttonPanel
@@ -1136,6 +1139,8 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id checkBoxCitizen
+id checkBoxContractor
 id checkbox
 id chronometer
 id clip_horizontal
@@ -1163,6 +1168,11 @@ id end
 id enter
 id enterAlways
 id enterAlwaysCollapsed
+id et_cpassword
+id et_lpassword
+id et_lusername
+id et_password
+id et_username
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1362,7 +1372,9 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_home_page
+layout activity_login
 layout activity_main
+layout activity_register
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

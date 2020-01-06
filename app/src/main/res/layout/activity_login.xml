@@ -4,9 +4,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:background="blue">
 
-         <EditText
+                tools:context=".ui.login_signup.login">
+<EditText
         android:id="@+id/et_lusername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:inputType="text"
         android:hint="Username" />
 
-        <EditText
+<EditText
         android:id="@+id/et_lpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:inputType="textPassword"
         android:hint="Password" />
 
-        <Button
+<Button
         android:id="@+id/btn_llogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:ems="10"
         android:text="Login"/>
 
-        <Button
+<Button
         android:id="@+id/btn_lregister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,4 +48,4 @@
         android:text="Register"/>
 
 
-            </RelativeLayout>
+</RelativeLayout>

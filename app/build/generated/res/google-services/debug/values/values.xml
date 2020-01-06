@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_web_client_id" translatable="false">543188174392-vjg7064ibojldevd7j530dk5sp454oll.apps.googleusercontent.com</string>
-    <string name="firebase_database_url" translatable="false">https://pothole-b8122.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">543188174392</string>
-    <string name="google_api_key" translatable="false">AIzaSyC1towV2u4K7xXZ9d4uxwmClKFXIQkrtOU</string>
-    <string name="google_app_id" translatable="false">1:543188174392:android:0c16b297748ba73719c8cd</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC1towV2u4K7xXZ9d4uxwmClKFXIQkrtOU</string>
-    <string name="google_storage_bucket" translatable="false">pothole-b8122.appspot.com</string>
-    <string name="project_id" translatable="false">pothole-b8122</string>
+    <string name="default_web_client_id" translatable="false">600102884824-p1mhm69q6f27sim0ohpt9em85squ3ko3.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://potholesih.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">600102884824</string>
+    <string name="google_api_key" translatable="false">AIzaSyC2MvNKNan2GLecWTLTnySKP7rEJ5lhRKU</string>
+    <string name="google_app_id" translatable="false">1:600102884824:android:c5ee7c4da75c8c67954ead</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC2MvNKNan2GLecWTLTnySKP7rEJ5lhRKU</string>
+    <string name="google_storage_bucket" translatable="false">potholesih.appspot.com</string>
+    <string name="project_id" translatable="false">potholesih</string>
 </resources>
