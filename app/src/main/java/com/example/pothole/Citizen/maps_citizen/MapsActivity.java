@@ -78,10 +78,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             mMap.setMaxZoomPreference(20);
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 21.0f));
                         }
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("Pothole");
-                        Position obj=new Position(latitude,longitude);
-                        myRef.child("p4").setValue(obj);
+//                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                        DatabaseReference myRef = database.getReference("Pothole");
+//                        Position obj=new Position(latitude,longitude);
+//                        myRef.child("p4").setValue(obj);
 
 
 

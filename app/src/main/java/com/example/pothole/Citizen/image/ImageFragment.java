@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,16 +27,23 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.pothole.Connectivity;
 import com.example.pothole.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
 public class ImageFragment extends Fragment {
+    FirebaseAuth mAuth;
     private StorageReference mStorageRef;
     public static final int REQUESTCODE = 999;
     public static final int RequestPermissionCode = 1;
@@ -51,8 +59,7 @@ public class ImageFragment extends Fragment {
     double longitude;
     LocationTrack locationTrack;
     double latitude;
-    FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference=firebaseDatabase.getReference().child("/Pothole");
+    DatabaseReference databaseReference;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         imageViewModel = ViewModelProviders.of(this).get(ImageViewModel.class);
         View root = inflater.inflate(R.layout.fragment_image, container, false);
@@ -68,7 +75,6 @@ public class ImageFragment extends Fragment {
         content = (LinearLayout) root.findViewById(R.id.content);
         afterphototaken = (ImageView) root.findViewById(R.id.imageView);
         btngallery = (Button) root.findViewById(R.id.btngallery);
-
 
         EnableRuntimePermission();
         btngallery.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +104,7 @@ public class ImageFragment extends Fragment {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
-              locationTrack = new LocationTrack(getActivity());
+                locationTrack = new LocationTrack(getActivity());
                 if (locationTrack.canGetLocation()) {
 
 
@@ -107,16 +113,6 @@ public class ImageFragment extends Fragment {
 
 
                     Toast.makeText(getActivity(), "Longitude:" + Double.toString(longitude) + "\nLatitude:" + Double.toString(latitude), Toast.LENGTH_SHORT).show();
-                    PotholeLocation pht=new PotholeLocation(1,latitude,longitude,1,1,"abc");
-                    // String id  = databaseReference.push().getKey();
-
-                    pht.setFlag(1);
-                    pht.setLat(latitude);
-                    pht.setLongi(longitude);
-                    pht.setPhotoid(1);
-                    pht.setStatus(1);
-                    pht.setUserid("abc");
-                    //databaseReference.setValue(pht);
 
                 } else {
                     locationTrack.showSettingsAlert();
@@ -131,38 +127,50 @@ public class ImageFragment extends Fragment {
 
                 try {
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                     byte[] byteArray = stream.toByteArray();
 
-                    Connectivity c = new Connectivity(getContext());
-                    c.execute(byteArray);
-//                    mStorageRef= FirebaseStorage.getInstance().getReference("Pothole_photos").child("pothole.jpg");
-//                    StorageReference mstore=mStorageRef.child("Pothole_photos/pothole.jpg");
-//                    UploadTask uploadTask = mStorageRef.putBytes(byteArray);
-//                    uploadTask.addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception exception) {
-//                            // Handle unsuccessful uploads
-//                        }
-//                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-//
-//                        }
-//                    });
+                    //Connectivity c = new Connectivity(getContext());
+                    //c.execute(byteArray);
 
-//                    //$$$$$$$$$$$$$$$$$$$data(location) goes into database
-                    PotholeLocation pht=new PotholeLocation(1,latitude,longitude,1,1,"abc");
-                    databaseReference.setValue(pht);
+                    //for adding pothole data into pothole node
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child("pothole");
+                    String tempPotholeUid = databaseReference.push().getKey();
 
+                    PotholeLocation pht=new PotholeLocation(latitude,longitude,1,1,FirebaseAuth.getInstance().getUid(),tempPotholeUid);
 
+                    databaseReference.child(tempPotholeUid).setValue(pht);
+                    //#######adding pothole information done here##################
+
+                    //######for adding pothole image in firebase storage###########
+                    mAuth = FirebaseAuth.getInstance();
+                    String uid=mAuth.getUid();
+                    String path="Pothole_photos/"+tempPotholeUid+"/mypothole.png";
+                    mStorageRef= FirebaseStorage.getInstance().getReference(path);
+
+                    UploadTask uploadTask = mStorageRef.putBytes(byteArray);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            Toast.makeText(getContext(),"fail to upload",Toast.LENGTH_SHORT);
+
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(getContext(),"Successful to upload",Toast.LENGTH_SHORT);
+                        }
+                    });
+                    //############adding image done here################3
+
+                    //#######3adding this info to user's node##############
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getUid());
                 } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(getActivity(), "Server Down! :(", Toast.LENGTH_SHORT).show();
                 }
             }
-
         });
         return root;
     }
@@ -203,6 +211,12 @@ public class ImageFragment extends Fragment {
         } else if (requestCode == 100 && resultCode == RESULT_OK) {
             imageURi = data.getData();
             afterphototaken.setImageURI(imageURi);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageURi);
+            }catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
