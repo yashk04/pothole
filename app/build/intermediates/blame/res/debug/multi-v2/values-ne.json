@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\shubh\\pothole\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ne\\values-ne.xml",
+            "outputFile": "G:\\pothole\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ne\\values-ne.xml",
             "map": [
                 {
                     "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-2\\files-2.1\\93d7ae8bc00cd79d08e935d76825e97b\\core-1.0.1\\res\\values-ne\\values-ne.xml",

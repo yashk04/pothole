@@ -30,17 +30,18 @@
         app:layout_constraintTop_toTopOf="parent"
 
         app:layout_constraintVertical_bias="0.252" />
-<!--android:scaleType="fitXY"-->
+    <!--android:scaleType="fitXY"-->
+
     <Button
         android:id="@+id/btnimage"
         android:layout_width="wrap_content"
         android:layout_height="58dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="48dp"
         android:text="Take Image"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="@+id/text_home"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
@@ -53,5 +54,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnimage" />
+
+    <Button
+        android:id="@+id/btngallery"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="64dp"
+        android:text="Gallery"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),HomePage.class);
+                Intent i= new Intent(getApplicationContext(), CitizenHome.class);
                 startActivity(i);
             }
         });

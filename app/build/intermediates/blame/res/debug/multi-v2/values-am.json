@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\shubh\\pothole\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
+            "outputFile": "G:\\pothole\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
             "map": [
                 {
                     "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-2\\files-2.1\\6df39c40f5f7e458f5e7fe4ff61a0d62\\jetified-play-services-basement-17.0.0\\res\\values-am\\values.xml",
