@@ -310,7 +310,7 @@ public class ImageFragment extends Fragment {
                                                 databaseReference = FirebaseDatabase.getInstance().getReference().child("pothole");
                                                 tempPotholeUid = databaseReference.push().getKey();
 
-                                                PotholeLocation pht = new PotholeLocation(latitude, longitude, 1, 1, FirebaseAuth.getInstance().getUid(), tempPotholeUid, imageUrl);
+                                                PotholeLocation pht = new PotholeLocation(latitude, longitude, 1, 1, FirebaseAuth.getInstance().getUid(), tempPotholeUid, imageUrl,0);
                                                 databaseReference.child(tempPotholeUid).setValue(pht);
 
                                                 databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(FirebaseAuth.getInstance().getUid());
