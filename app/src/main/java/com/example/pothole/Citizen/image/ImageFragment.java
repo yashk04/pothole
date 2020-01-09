@@ -251,11 +251,8 @@ public class ImageFragment extends Fragment {
                                                 databaseReference.child("points").setValue(upvotePoints);
                                                 progressDialog.dismiss();
                                             }
-
                                             @Override
-                                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                            }
+                                            public void onCancelled(@NonNull DatabaseError databaseError) { }
                                         });
 
                                     }
