@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,17 +13,29 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.pothole.R;
+import com.example.pothole.after_clicking_marker;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,6 +43,7 @@ import java.util.Objects;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,LocationListener {
 
+    FirebaseAuth mAuth;
     private GoogleMap mMap;
     LocationManager locationManager;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
@@ -72,19 +86,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             marker.remove();
                             marker = mMap.addMarker(new MarkerOptions().position(latLng).title(result));
                             mMap.setMaxZoomPreference(20);
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0f));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 21.0f));
                         } else {
                             marker = mMap.addMarker(new MarkerOptions().position(latLng).title(result));
                             mMap.setMaxZoomPreference(20);
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 21.0f));
                         }
-//                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//                        DatabaseReference myRef = database.getReference("Pothole");
-//                        Position obj=new Position(latitude,longitude);
-//                        myRef.child("p4").setValue(obj);
-
-
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -133,7 +140,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             marker.remove();
                             marker = mMap.addMarker(new MarkerOptions().position(latLng).title(result));
                             mMap.setMaxZoomPreference(20);
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0f));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 21.0f));
                         } else {
                             marker = mMap.addMarker(new MarkerOptions().position(latLng).title(result));
                             mMap.setMaxZoomPreference(20);
@@ -178,12 +185,91 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Log.i("tejas","marker2");
 
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLngBounds boundsIndia = new LatLngBounds(new LatLng(23.63936, 68.14712), new LatLng(28.20453, 97.34466));
+        int padding = 0; // offset from edges of the map in pixels
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(boundsIndia, padding);
+        mMap.animateCamera(cameraUpdate);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("pothole");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Log.i("tejas","marker3");
+                double latitude,longitude;
+                mAuth = FirebaseAuth.getInstance();
+                String uid=mAuth.getUid();
+                mMap.clear();
+                for(DataSnapshot p:dataSnapshot.getChildren())
+                {
+                    String potuid=p.getKey().toString();
+                    String str=p.child("uploadBy").getValue(String.class);
+                    if(uid.equals(str))
+                    {
+                        latitude=p.child("lat").getValue(double.class);
+                        longitude=p.child("longi").getValue(double.class);
+                        LatLng plot=new LatLng(latitude,longitude);
+                        mMap.addMarker(new MarkerOptions().position(plot).title("Potholes reported by me").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).setTag(potuid);
+                       //mMap.moveCamera(CameraUpdateFactory.newLatLng(plot));
+                        // Toast.makeText(getApplicationContext(),"Pothole reported by me",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        latitude=p.child("lat").getValue(double.class);
+                        longitude=p.child("longi").getValue(double.class);
+                        LatLng plot=new LatLng(latitude,longitude);
+                        mMap.addMarker(new MarkerOptions().position(plot).title("Potholes reported from here").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))).setTag((potuid));
+                        //mMap.moveCamera(CameraUpdateFactory.newLatLng(plot));
+
+                    }
+
+                }
+
+                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+
+
+                    @Override
+                    public boolean onMarkerClick(final Marker marker) {
+                        String title = marker.getTitle();
+                        if (title.equals("Potholes reported by me")) {
+                            LatLng m = marker.getPosition();
+                            String address = getAddressLine(m);
+                            final Marker plot = marker;
+                            View view = findViewById(android.R.id.content);
+                            Snackbar snackbar = Snackbar
+                                    .make(view, address, Snackbar.LENGTH_LONG)
+                                    .setAction("View", new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            String obj = plot.getTag().toString();
+
+                                            Intent i = new Intent(MapsActivity.this, after_clicking_marker.class);
+                                            i.putExtra("co-ordinates", obj);
+                                            startActivity(i);
+                                        }
+                                    });
+                            snackbar.show();
+                            // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(m.latitude,m.longitude), 5.0f));
+                        }
+
+                        return false;
+                    }
+                });
+
+
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
+
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -208,5 +294,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onProviderDisabled(String s) {
 
+    }
+    public  String getAddressLine(LatLng m)
+    {
+
+        Geocoder geo=new Geocoder(getApplicationContext());
+        String address="";
+        try {
+            List<Address> addresses =null;
+            try {
+                addresses = geo.getFromLocation(m.latitude, m.longitude, 1);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+
+            // Toast.makeText(getActivity(),fulladdress,Toast.LENGTH_LONG).show();
+        }catch(Exception e)
+        {
+
+        }
+        return address;
     }
 }
