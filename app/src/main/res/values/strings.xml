@@ -9,4 +9,12 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps2">Map</string>
     <string name="title_activity_maps3">Map</string>
+
+
+    <string name="status_prompt">Choose a status</string>
+    <string-array name="status_count">
+        <item>1 (Work Assigned)</item>
+        <item>2 (Work Started)</item>
+        <item>3 (Work Completed)</item>
+    </string-array>
 </resources>

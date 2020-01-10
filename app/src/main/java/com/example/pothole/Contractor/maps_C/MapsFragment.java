@@ -42,8 +42,8 @@ public class MapsFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //inflater.inflate(R.menu.map_option, menu);
-       // return super.onCreateOptionsMenu(menu,inflater);
-       inflater.inflate(R.menu.map_option, menu);
+        // return super.onCreateOptionsMenu(menu,inflater);
+        inflater.inflate(R.menu.map_option, menu);
 
     }
 

@@ -18,6 +18,7 @@ public class CitizenHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
        /* //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         //Remove notification bar

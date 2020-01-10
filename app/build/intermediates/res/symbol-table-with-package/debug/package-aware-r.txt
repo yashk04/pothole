@@ -31,6 +31,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array status_count
 attr action
 attr actionBarDivider
 attr actionBarItemBackground
@@ -869,6 +870,15 @@ dimen activity_horizontal_margin
 dimen activity_vertical_margin
 dimen browser_actions_context_menu_max_width
 dimen browser_actions_context_menu_min_padding
+dimen card_height
+dimen card_image_height
+dimen card_marginBottom1
+dimen card_marginBottom2
+dimen card_marginLeft
+dimen card_marginRight
+dimen card_marginTop
+dimen card_tripName_marginLeft
+dimen card_tripName_marginTop
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -1224,6 +1234,7 @@ id btngallery
 id btnimage
 id btnsubmit
 id buttonPanel
+id buttonSubmitUpdate
 id button_create
 id button_done
 id button_next
@@ -1261,7 +1272,6 @@ id direct
 id disableHome
 id dynamic
 id editText4
-id editText5
 id editText6
 id editText7
 id edit_phone_number
@@ -1292,6 +1302,7 @@ id forever
 id fragment_phone
 id fragment_register_email
 id ghost_view
+id glide_custom_view_target_tag
 id gone
 id group_divider
 id groups
@@ -1314,6 +1325,7 @@ id italic
 id item_touch_helper_previous_elevation
 id labeled
 id largeLabel
+id lastdate
 id left
 id light
 id line1
@@ -1366,6 +1378,7 @@ id phone_button
 id phone_layout
 id phone_number
 id pin
+id potholeImage
 id progress_circular
 id progress_horizontal
 id radio
@@ -1385,6 +1398,7 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id scrollview
 id search_badge
 id search_bar
 id search_button
@@ -1409,6 +1423,7 @@ id snackbar_text
 id snap
 id snapMargins
 id spacer
+id spinner
 id split_action_bar
 id spread
 id spread_inside
@@ -1417,6 +1432,7 @@ id src_in
 id src_over
 id standard
 id start
+id startdate
 id stretch
 id submenuarrow
 id submit_area
@@ -1425,16 +1441,20 @@ id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id temp
 id terrain
 id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
+id textView3
 id textView4
 id textView5
 id textView6
 id textView7
+id textView8
 id text_account
 id text_home
 id text_input_password_toggle
@@ -1457,7 +1477,9 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tripCardHolder
 id trouble_signing_in
+id txtemail
 id uniform
 id unlabeled
 id up
@@ -1526,6 +1548,7 @@ layout activity_login
 layout activity_main
 layout activity_map_load
 layout activity_maps
+layout activity_pothole_info_c
 layout activity_register
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
@@ -1745,6 +1768,7 @@ string path_password_strike_through
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
+string status_prompt
 string title_Maps
 string title_account
 string title_activity_home_page
