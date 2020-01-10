@@ -1542,6 +1542,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_after_clicking_marker
 layout activity_contractor_home
 layout activity_home_page
 layout activity_login

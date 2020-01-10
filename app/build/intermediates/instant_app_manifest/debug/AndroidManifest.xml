@@ -37,6 +37,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.pothole.after_clicking_marker" />
         <activity android:name="com.example.pothole.Contractor.notifications_C.PotholeInfo_c" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_mapsc">
+
+    <fragment
+        android:id="@+id/navigation_mapsc"
+        android:name="com.example.pothole.Contractor.maps_C.MapsFragment"
+        android:label="@string/title_image"
+        tools:layout="@layout/map_contractor_c" />
+
+    <!--<fragment
+        android:id="@+id/navigation_maps"
+        android:name="com.example.pothole.ui.maps.MapsFragment"
+        android:label="@string/title_Maps"
+        tools:layout="@layout/fragment_maps_C" />
+        -->
+
+    <fragment
+        android:id="@+id/navigation_notificationsc"
+        android:name="com.example.pothole.Contractor.notifications_C.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications_c" />
+
+    <fragment
+        android:id="@+id/navigation_accountc"
+        android:name="com.example.pothole.Contractor.account_C.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account_c" />
+
+</navigation>

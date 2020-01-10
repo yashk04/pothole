@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
 MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\e4c785c664aba861918800fa05bd5d30\jetified-navigation-ui-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\fa4ca2033e6591d79bd4b00b7ac3e334\jetified-firebase-ui-auth-4.1.0\AndroidManifest.xml:2:1-114:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\314e78ee411997f535ea385b0dca3a47\material-1.0.0\AndroidManifest.xml:17:1-24:12
@@ -73,20 +73,20 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\e1d01877c650a22b3c257891754df4cc\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\0694e27135a967a4619b8381997d15ff\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\8e5501d68d01dce42031dc1b525c12ab\firebase-database-collection-17.0.0\AndroidManifest.xml:2:1-7:12
-INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
 	package
 		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from G:\pothole\app\src\main\AndroidManifest.xml
 		INJECTED from G:\pothole\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from G:\pothole\app\src\main\AndroidManifest.xml
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
 		INJECTED from G:\pothole\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from G:\pothole\app\src\main\AndroidManifest.xml
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-60:12
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:2:1-61:12
 		INJECTED from G:\pothole\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:2:11-69
@@ -125,7 +125,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.0] C:
 	android:name
 		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:12:22-64
 application
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:14:5-58:19
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:14:5-59:19
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\fa4ca2033e6591d79bd4b00b7ac3e334\jetified-firebase-ui-auth-4.1.0\AndroidManifest.xml:15:5-112:19
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\fa4ca2033e6591d79bd4b00b7ac3e334\jetified-firebase-ui-auth-4.1.0\AndroidManifest.xml:15:5-112:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\314e78ee411997f535ea385b0dca3a47\material-1.0.0\AndroidManifest.xml:22:5-20
@@ -200,74 +200,78 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] C:\Users\shubh\.gradle\
 		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:15:9-35
 	android:theme
 		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:20:9-40
+activity#com.example.pothole.after_clicking_marker
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:21:9-68
+	android:name
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:21:19-56
 activity#com.example.pothole.Contractor.notifications_C.PotholeInfo_c
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:21:9-87
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:22:9-78
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:21:19-75
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:22:19-75
 meta-data#com.google.android.geo.API_KEY
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:30:9-32:55
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:31:9-33:55
 	android:value
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:32:13-52
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:33:13-52
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:31:13-58
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:32:13-58
 meta-data#com.google.android.gms.version
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:33:9-35:69
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:34:9-36:69
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\fa4ca2033e6591d79bd4b00b7ac3e334\jetified-firebase-ui-auth-4.1.0\AndroidManifest.xml:16:9-18:69
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\fa4ca2033e6591d79bd4b00b7ac3e334\jetified-firebase-ui-auth-4.1.0\AndroidManifest.xml:16:9-18:69
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\6df39c40f5f7e458f5e7fe4ff61a0d62\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\shubh\.gradle\caches\transforms-2\files-2.1\6df39c40f5f7e458f5e7fe4ff61a0d62\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:35:13-66
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:36:13-66
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:34:13-58
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:35:13-58
 service#com.example.pothole.Citizen.image.LocationTrack
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:37:9-39:37
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:38:9-40:37
 	android:label
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:39:13-34
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:40:13-34
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:38:13-56
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:39:13-56
 activity#com.example.pothole.Citizen.maps_citizen.MapsActivity
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:41:9-43:59
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:42:9-44:59
 	android:label
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:43:13-56
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:44:13-56
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:42:13-62
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:43:13-62
 activity#com.example.pothole.MainActivity
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:44:9-50
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:45:9-50
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:44:19-47
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:45:19-47
 activity#com.example.pothole.CitizenHome
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:45:9-49
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:46:9-49
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:45:19-46
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:46:19-46
 activity#com.example.pothole.ContractorHome
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:46:9-52
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:47:9-52
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:46:19-49
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:47:19-49
 activity#com.example.pothole.Contractor.maps_C.MapLoad
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:47:9-63
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:48:9-63
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:47:19-60
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:48:19-60
 activity#com.example.pothole.login_signup.register
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:48:9-59
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:49:9-59
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:48:19-56
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:49:19-56
 activity#com.example.pothole.login_signup.login
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:49:9-57:20
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:50:9-58:20
 	android:label
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:51:13-61
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:52:13-61
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:50:13-47
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:51:13-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:52:13-56:29
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:53:13-57:29
 action#android.intent.action.MAIN
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:53:17-69
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:54:17-69
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:53:25-66
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:54:25-66
 category#android.intent.category.LAUNCHER
-ADDED from G:\pothole\app\src\main\AndroidManifest.xml:55:17-77
+ADDED from G:\pothole\app\src\main\AndroidManifest.xml:56:17-77
 	android:name
-		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:55:27-74
+		ADDED from G:\pothole\app\src\main\AndroidManifest.xml:56:27-74
 uses-sdk
 INJECTED from G:\pothole\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\pothole\app\src\main\AndroidManifest.xml
