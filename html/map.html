@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+            <title>Data From Firebase Database</title>
+<!--<meta http-equiv="refresh" content="5" >   -->
+<style>
+#map{
+
+    height: 400px;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+
+<div class= "mainDiv" align= "left">
+<h1> Locations </h1>
+<table>
+<thead>
+<tr>
+<td>Latitude</td>
+<td>Longitude</td>
+</tr>
+</thead>
+<tbody id="table_body">
+</tbody>
+</table>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
+<script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyA1A9b4EmfdEbOmjvjreF0LVWqNKyjju7w",
+        authDomain: "pothole-83e3f.firebaseapp.com",
+        databaseURL: "https://pothole-83e3f.firebaseio.com",
+        projectId: "pothole-83e3f",
+        storageBucket: "pothole-83e3f.appspot.com",
+        messagingSenderId: "42833652244",
+        appId: "1:42833652244:web:b0765e7301b8e2300f5501",
+        measurementId: "G-097ZTKWCQG"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script>
+firebase.database().ref('Pothole').once('value').then(function(snapshot) {
+    var latitude = snapshot.val().lat;
+    var longitude = snapshot.val().longi;
+    initMap(parseFloat(latitude),parseFloat(longitude));
+
+
+$("#table_body").append("<tr><td>" + latitude + "</td><td>" + longitude + "</td></tr>");
+
+});
+
+</script>
+
+<h1>Map</h1>
+<div id="map"></div>
+
+    <script>
+
+function initMap(latitude,longitude){
+
+
+      //alert('Values have been gathered click ok to show map !! Welcome Taj , from Arslan !! :PP');
+      var options = {
+          zoom: 8,
+              center: {lat: latitude,lng:longitude}
+      }
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+
+
+      var marker = new google.maps.Marker({
+              position:{lat: latitude, lng: longitude},
+              map:map,
+            });
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBprvwgfBbnT1BbqZOsttOh1iOpH5tgqsc"></script>
+</body>
+</html>
