@@ -14,6 +14,7 @@ firebase.analytics();
 
 function initMap()
 {
+    var marker;
     var locations = [];
     var potholeImages = [];
     var ref = firebase.database().ref('pothole');
@@ -30,33 +31,30 @@ function initMap()
       if(latitude.statusFlag == 0) {
         //pothole work not assigned
         var a = latitude.potholeCount;
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
               icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/red-dot.png"),
               position:{lat: latitude.lat, lng: latitude.longi},
               map:map,
-              url: "",
               title: ""+a
             });
       }
       else if(latitude.statusFlag == 1) {
         //pothole work is assigned but not started
         var b = latitude.potholeCount;
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
               icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"),
               position:{lat: latitude.lat, lng: latitude.longi},
               map:map,
-              url: "",
               title: ""+b
             });
       }
       else if(latitude.statusFlag == 2) {
         //pothole work in progress
         var c = latitude.potholeCount;
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
               icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/blue-dot.png"),
               position:{lat: latitude.lat, lng: latitude.longi},
               map:map,
-              url: "",
               title: ""+c
             });
       }
@@ -64,11 +62,10 @@ function initMap()
         //pothole work completed
         var d = latitude.potholeCount;
 
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
               icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/green-dot.png"),
               position:{lat: latitude.lat, lng: latitude.longi},
               map:map,
-              url: "",
               title: ""+d
             });
 
@@ -126,46 +123,13 @@ google.maps.event.addListener(marker, 'click', function(e) {
        if(!locations.includes(value.potholeUid) && value.statusFlag == 0) {
          locations.push(value.potholeUid);
          potholeImages.push(value.potholeImageUid);
-         alert(locations);
+         alert(locations.length);
        }else if(locations.includes(value.potholeUid)){
          locations.splice(locations.indexOf(value.potholeUid), 1);
          potholeImages.splice(potholeImages.indexOf(value.potholeImageUid), 1);
-         alert(locations);
+         alert(locations.length);
        }
-       // if(flag == 0) {
-       var marker = new google.maps.Marker({
-             icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/purple-dot.png"),
-             position:{lat: e.latLng.lat(), lng: e.latLng.lng()},
-             map:map,
-             url: "",
-             title: snapshot.val().potholeCount
-       });
-       // flag = 1;
-       // }else if(flag == 1) {
-       //   var marker = new google.maps.Marker({
-       //         icon: new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/red-dot.png"),
-       //         position:{lat: e.latLng.lat(), lng: e.latLng.lng()},
-       //         map:map,
-       //         url: "",
-       //         title: snapshot.val().potholeCount
-       //       });
-       //       flag = 0;
-       // }
-       //EMail of contractor displayed
-       //alert(value.contractorUid);
-       //var ref5 = firebase.database().ref('contractor');
-       //ref5.orderByChild('email').equalTo(value.contractorUid).on('child_added',function(snapshot1) {
-         // alert("on contractor");
-         // if(value.contractorUid === snapshot1.key)
-         // {
-         //   document.getElementById('contractorEmail').innerHTML = snapshot1.val().email;
-         // }
-         // else {
-         //   document.getElementById('contractorEmail').innerHTML = " ";
-         // }
-        // alert("yes");
-         //document.getElementById('contractorEmail').innerHTML = snapshot1.;
-      //});
+
        document.getElementById('image').src = value.potholeImageUid;
        document.getElementById('location').innerHTML = value.fullAddress;
        document.getElementById('potholes').innerHTML = value.potholeCount;
@@ -189,11 +153,6 @@ google.maps.event.addListener(marker, 'click', function(e) {
        {
          document.getElementById('work').innerHTML = "Work is finished";
        }
-       // snapshot.forEach(function(data) {
-       //     console.log(data.key);
-
-       // });4
-
      });
 
    });
@@ -203,6 +162,8 @@ google.maps.event.addListener(marker, 'click', function(e) {
 
 
 //displaying emails starts here
+            var email;
+            var i;
             firebase.database().ref('contractor').on('child_added',function(snapshot1) {
               // if(value.contractorUid === snapshot1.key)
               // {
@@ -227,12 +188,14 @@ google.maps.event.addListener(marker, 'click', function(e) {
               }
 
               $("button.hireButton").click(function() {
-                var i;
+
+
+                if(id === this.id) {
+                  email = snapshot1.val().email;
+                }
                 for(i=0;i < locations.length;i++) {
-                  var email;
-                  if(id === this.id) {
-                    email = snapshot1.val().email;
-                  }
+
+
                   // alert(email);
                   firebase.database().ref('pothole/' + locations[i] +"/").update({
                     contractorUid: this.id,
@@ -268,12 +231,13 @@ google.maps.event.addListener(marker, 'click', function(e) {
                     }, function(error) {
                       if (error) {
                         // The write failed...
-                        alert(error.message);
+                        alert(error);
                       } else {
                         // Data saved successfully!
                         alert("Data saved");
                       }
                     });
+
                   }
 
 

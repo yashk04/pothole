@@ -25,7 +25,7 @@ function abc(){
      for(i=5;i>0;i=i-2)
     {
         //alert(arr);
-    $("#table_body").append("<tr><td> " + arr[i-1]+"</td><td> " + arr[i]+"</td></tr>");
+    $("#table_body").append("<tr><td><p>" + arr[i-1]+"</td><td> " + arr[i]+"</p></td></tr>");
     }
      }
 
@@ -41,6 +41,3 @@ function abc(){
         {//alert("in");
         abc();}
    });
-
-     
-   
