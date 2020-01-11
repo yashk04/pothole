@@ -72,8 +72,8 @@ function initMap()
               title: ""+d
             });
 
-        $("#menu4").append("<li>" + snapshot.key + "<button class='finishButton' id='" + snapshot.key +"'>Finish</button>" + "</li>");
-        $("#menu4").append("<div class='row'><div class='col'><ul><li>" + snapshot.key + "</li></ul></div>" + "<div class='col'><button class='hireButton btn btn-md btn-success float-right' id='" + snapshot.key +"'>Hire</button></div></div><br>");
+
+        $("#menu4").append("<div class='row'><div class='col'><ul><li>" + snapshot.key + "</li></ul></div>" + "<div class='col'><button class='finishButton btn btn-md btn-success float-right' id='" + snapshot.key +"'>Finish</button></div></div><br>");
         $("button.finishButton").click(function() {
                 firebase.database().ref('pothole/' + snapshot.key +"/").update({
                   statusFlag: 4,
@@ -223,7 +223,7 @@ google.maps.event.addListener(marker, 'click', function(e) {
                 $("#menu2").append("<div class='row'><div class='col'><ul><li>" + emailId + "</li></ul></div>" + "<div class='col'><button class='removeButton btn btn-md btn-danger float-right' id='" + id +"'>Remove</button></div></div><br>");
               }
               if(snapshot1.val().busyFlag != 2) {
-                $("#menu3").append("<div class='row'><div class='col'><ul><li>" + emailId + "</li></ul></div>" + "<div class='col'><button class='blackListButton btn btn-md btn-success float-right' id='" + id +"'>Add</button></div></div><br>");
+                $("#menu3").append("<div class='row'><div class='col'><ul><li>" + emailId + "</li></ul></div>" + "<div class='col'><button class='blackListButton btn btn-md btn-danger float-right' id='" + id +"'>Add to Blacklist</button></div></div><br>");
               }
 
               $("button.hireButton").click(function() {
