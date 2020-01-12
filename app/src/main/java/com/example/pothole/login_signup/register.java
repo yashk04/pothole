@@ -26,7 +26,7 @@ import static com.google.firebase.auth.FirebaseAuth.*;
 public class register extends AppCompatActivity {
     CheckBox userCheckBox;
     CheckBox contractorCheckBox;
-    EditText username,password,cpassword;
+    EditText username,password,cpassword,fullname;
     String   category=null;
     Button   btn_register_here;
     private FirebaseAuth mAuth;
@@ -40,10 +40,11 @@ public class register extends AppCompatActivity {
 
         userCheckBox = (CheckBox)findViewById(R.id.checkBoxCitizen);
         contractorCheckBox = (CheckBox)findViewById(R.id.checkBoxContractor);
-        username  = (EditText)findViewById(R.id.et_username);
-        password  = (EditText)findViewById(R.id.et_password);
-        cpassword = (EditText)findViewById(R.id.et_cpassword);
-        btn_register_here = (Button)findViewById(R.id.btn_llregister);
+        fullname  = (EditText)findViewById(R.id.txtname);
+        username=(EditText)findViewById(R.id.txtid);
+        password  = (EditText)findViewById(R.id.txtpassword);
+        cpassword = (EditText)findViewById(R.id.txtconfirmPassword);
+        btn_register_here = (Button)findViewById(R.id.btnSignup);
 
         progressDialog = new ProgressDialog(getApplicationContext());
         progressDialog.setMessage("Registration In Process...");
@@ -71,6 +72,7 @@ public class register extends AppCompatActivity {
                 final String emailstr      =(username).getText().toString().trim();
                 final String passwordstr   =(password).getText().toString().trim();
                 final String conpasswordstr=(cpassword).getText().toString().trim();
+                final String fname=(fullname).getText().toString().trim();
                 if (TextUtils.isEmpty(emailstr)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
@@ -115,6 +117,7 @@ public class register extends AppCompatActivity {
                                     Toast.makeText(register.this, "createUserWithEmail:onComplete:", Toast.LENGTH_SHORT).show();
                                     if(category.equals("user")) {
                                         reference = FirebaseDatabase.getInstance().getReference().child("user");
+                                        (reference.child(getInstance().getUid())).child("full name").setValue(fname);
                                         (reference.child(getInstance().getUid())).child("email").setValue(emailstr);
                                         (reference.child(getInstance().getUid())).child("points").setValue(0);
                                     }

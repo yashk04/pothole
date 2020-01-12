@@ -36,7 +36,7 @@ public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     LinearLayout CardHolder;
-
+    TextView txtnotice;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +45,8 @@ public class NotificationsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_notifications_c, container, false);
         final TextView textView = root.findViewById(R.id.text_notifications);
         CardHolder = root.findViewById(R.id.tripCardHolder);
-
+        txtnotice=root.findViewById(R.id.Notice);
+        txtnotice.setVisibility(View.INVISIBLE);
         fetchTrips();
         return root;
     }
@@ -92,6 +93,8 @@ public class NotificationsFragment extends Fragment {
 
                 }else{
                     CardHolder.removeAllViews();
+                    txtnotice.setVisibility(View.VISIBLE);
+
                 }
             }
             @Override
@@ -132,51 +135,14 @@ public class NotificationsFragment extends Fragment {
         params4.setMargins((int) getResources().getDimension(R.dimen.card_tripName_marginLeft),(int) getResources().getDimension( R.dimen.card_tripName_marginTop),0, 0);
         RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(params4);
         tripName.setLayoutParams(layoutParams1);
-        tripName.setText(key);
+        tripName.setText("Pothole "+i+1);
         tripName.setTypeface(tripName.getTypeface(), Typeface.BOLD);
         tripName.setTextColor(Color.parseColor("#424242"));
         tripName.setTextSize(19);
 
-//        TextView creatorName = new TextView(getContext());
-//        LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        creatorName.setLayoutParams(params5);
-//        ViewGroup.MarginLayoutParams params6 = new ViewGroup.MarginLayoutParams(creatorName.getLayoutParams());
-//        params6.setMargins((int) getResources().getDimension(R.dimen.card_createdBy_marginLeft),(int) getResources().getDimension( R.dimen.card_createdBy_marginTop),0, 0);
-//        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(params6);
-//        creatorName.setLayoutParams(layoutParams2);
-//        creatorName.setText("By "+FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-//        creatorName.setTextSize(14);
-
-//        final LinearLayout sharedUsersHolder = new LinearLayout(getContext());
-//        LinearLayout.LayoutParams paramsy = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.card_sharedUserHolder_image_height));
-//        sharedUsersHolder.setLayoutParams(paramsy);
-//        ViewGroup.MarginLayoutParams paramsi = new ViewGroup.MarginLayoutParams(sharedUsersHolder.getLayoutParams());
-//        paramsi.setMargins((int) getResources().getDimension(R.dimen.card_sharedUserHolder_image_marginLeft),(int) getResources().getDimension( R.dimen.card_sharedUserHolder_image_marginTop),0, 0);
-//        RelativeLayout.LayoutParams layoutParamsi = new RelativeLayout.LayoutParams(paramsi);
-//        sharedUsersHolder.setLayoutParams(layoutParamsi);
-//        sharedUsersHolder.setOrientation(LinearLayout.HORIZONTAL);
-//        sharedUsersHolder.setGravity(Gravity.CENTER_VERTICAL);
-
-
-//        TextView itemsCount = new TextView(getContext());
-//        LinearLayout.LayoutParams params7 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        itemsCount.setLayoutParams(params7);
-//        ViewGroup.MarginLayoutParams params8 = new ViewGroup.MarginLayoutParams(itemsCount.getLayoutParams());
-//        params8.setMargins((int) getResources().getDimension(R.dimen.card_items_marginLeft),(int) getResources().getDimension( R.dimen.card_items_marginTop),0, 0);
-//        RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(params8);
-//        itemsCount.setLayoutParams(layoutParams3);
-//        try {
-//            itemsCount.setText("Featuring: "+tripJson.getString("noOfItems")+" items");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        itemsCount.setTextSize(14);
-
         cardView.addView(imageView);
         cardView.addView(tripName);
-//        cardView.addView(creatorName);
-//        cardView.addView(sharedUsersHolder);
-//        cardView.addView(itemsCount);
+
 
         CardHolder.addView(cardView);
     }

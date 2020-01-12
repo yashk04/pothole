@@ -23,7 +23,7 @@ public class ContractorHome extends AppCompatActivity {
                 R.id.navigation_mapsc, R.id.navigation_notificationsc, R.id.navigation_accountc)
                 .build();
         NavController navControllerc = Navigation.findNavController(this, R.id.nav_host_fragmentc);
-        // NavigationUI.setupActionBarWithNavController(this, navControllerc, appBarConfiguration);
+        //NavigationUI.setupActionBarWithNavController(this, navControllerc, appBarConfiguration);
         NavigationUI.setupActionBarWithNavController(this,navControllerc,appBarConfigurationc);
 
         NavigationUI.setupWithNavController(navViewc, navControllerc);

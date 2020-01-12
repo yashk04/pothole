@@ -1,6 +1,7 @@
 package com.example.pothole.Contractor.maps_C;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -27,13 +28,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MapLoad extends FragmentActivity implements OnMapReadyCallback {
     FirebaseDatabase ref;
     FirebaseAuth mAuth;
     private GoogleMap mMap;
+    int flag3=0;
     SupportMapFragment mapFragment;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,9 @@ public class MapLoad extends FragmentActivity implements OnMapReadyCallback {
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Log.i("tejas","on create called");
+        flag3 = 0;
+        //getCallingActivity()
     }
 
 
@@ -57,20 +65,48 @@ public class MapLoad extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Log.i("tejas","map ready");
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String cid=user.getUid();
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference potuidRef=database.getReference("contractor").child(cid).child("allotedPothole");
-        potuidRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference potuidRef=FirebaseDatabase.getInstance().getReference("contractor")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());//.child("allotedPothole");
+
+        potuidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final Map<String, Object> tripHash = (HashMap<String,Object>) dataSnapshot.getValue();
-                if(tripHash != null) {
-                    final JSONObject tripJson = new JSONObject(tripHash);
+                // if(flag3 !=1)
+                // {
+                if(dataSnapshot.hasChild("allotedPothole")){
+                    Log.i("tejas", "ekdach yaycha");
+                    final HashMap<String, Object> tripHash = (HashMap<String, Object>) dataSnapshot.child("allotedPothole").getValue();
+                    Log.i("tejassize",tripHash.size()+"");
+                    if (tripHash != null) {
+                        //final JSONObject tripJson = new JSONObject(tripHash);
+                        List<String> onlyIds = new ArrayList<String>(tripHash.keySet());
 
-                    for (final String key : tripHash.keySet()) {
-                        plotOnMap(key);
+                        for (int i=0;i<onlyIds.size();i++) {
+
+                            Log.i("tejas id",onlyIds.get(i));
+                            DatabaseReference potRefinfo = FirebaseDatabase.getInstance().getReference("pothole").child(onlyIds.get(i));
+                            potRefinfo.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    final CameraUpdate cu;
+                                    double longi = dataSnapshot.child("longi").getValue(double.class);
+                                    double lat = dataSnapshot.child("lat").getValue(double.class);
+                                    Log.i("tejaslat",lat+"");
+                                    Log.i("tejaslongi",longi+"");
+                                    LatLng plot = new LatLng(lat, longi);
+                                    mMap.addMarker(new MarkerOptions().position(plot).title("Pothole Alloted"));//.snippet(dataSnapshot.child("fullAddress").getValue(String.class)));
+                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(plot, 10f));
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+                        flag3=1;
                     }
                 }
             }
@@ -80,29 +116,5 @@ public class MapLoad extends FragmentActivity implements OnMapReadyCallback {
             }
         });
     }
-    public void plotOnMap( String key)
-    {
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference potRefinfo=database.getReference("pothole").child(key);
-        potRefinfo.addValueEventListener(new ValueEventListener() {
-            double longi;
-            double lat;
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final CameraUpdate cu;
-                longi=dataSnapshot.child("longi").getValue(double.class);
-                lat=dataSnapshot.child("lat").getValue(double.class);
-                LatLng plot = new LatLng(lat,longi);
-                mMap.addMarker(new MarkerOptions().position(plot).title("Pothole Alloted").snippet(dataSnapshot.child("fullAddress").getValue(String.class)));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(plot,10f));
 
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

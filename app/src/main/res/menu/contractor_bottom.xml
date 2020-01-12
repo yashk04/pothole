@@ -5,7 +5,7 @@
     <item
         android:id="@+id/navigation_mapsc"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="Potholes on map" />
+        android:title="Maps" />
 
     <!--<item
         android:id="@+id/navigation_maps"
@@ -15,7 +15,7 @@
     <item
         android:id="@+id/navigation_notificationsc"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Updates" />
+        android:title="Pothole Info" />
 
     <item
         android:id="@+id/navigation_accountc"

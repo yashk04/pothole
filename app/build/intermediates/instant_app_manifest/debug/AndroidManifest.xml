@@ -8,15 +8,11 @@
     <uses-sdk
         android:minSdkVersion="23"
         android:targetSdkVersion="29" />
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- this is used new one -->
+    <!-- this is used new one -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature
@@ -37,6 +33,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.pothole.Citizen.notifications.PotholeFeedback" />
+        <activity android:name="com.example.pothole.Citizen.image.tempCallingActivity" />
+        <activity android:name="com.example.pothole.Citizen.image.ML_Connectivity" />
         <activity android:name="com.example.pothole.after_clicking_marker" />
         <activity android:name="com.example.pothole.Contractor.notifications_C.PotholeInfo_c" />
         <!--
@@ -47,17 +46,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-        <service
-            android:name="com.example.pothole.Citizen.image.LocationTrack"
-            android:label="Track" />
-
         <activity
             android:name="com.example.pothole.Citizen.maps_citizen.MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -75,6 +63,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <service
+            android:name="com.example.pothole.Citizen.image.LocationTrack"
+            android:label="Track" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

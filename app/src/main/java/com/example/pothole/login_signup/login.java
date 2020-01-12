@@ -7,11 +7,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pothole.CitizenHome;
 import com.example.pothole.ContractorHome;
 import com.example.pothole.R;
+import com.example.pothole.login_signup.register;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,10 +27,13 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
 public class login extends AppCompatActivity {
 
     FirebaseAuth mAuth;
-    Button btn_login_here,btn_register_here;
+    Button btn_login_here;
+    TextView btn_register_here;
     EditText username_here,password_here;
     DatabaseReference ref;
     Context mycontext;
@@ -41,18 +46,18 @@ public class login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         ref   = FirebaseDatabase.getInstance().getReference();
-        btn_register_here = (Button)findViewById(R.id.btn_lregister);
-        btn_login_here = (Button)findViewById(R.id.btn_llogin);
+        btn_register_here = (TextView) findViewById(R.id.txtsignup);
+        btn_login_here = (Button)findViewById(R.id.btnlogin);
 
-        username_here = (EditText)findViewById(R.id.et_lusername);
-        password_here = (EditText)findViewById(R.id.et_lpassword);
-        username_here.setText("zzzz@gmail.com");
-        password_here.setText("123456");
+        username_here = (EditText)findViewById(R.id.username_text);
+        password_here = (EditText)findViewById(R.id.password_text);
+        //username_here.setText("zzzz@gmail.com");
+        //password_here.setText("123456");
 
         btn_register_here.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(login.this,register.class));
+                startActivity(new Intent(login.this, register.class));
             }
         });
 
@@ -60,8 +65,8 @@ public class login extends AppCompatActivity {
         btn_login_here.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               email_str = username_here.getText().toString().trim();
-               password_str = password_here.getText().toString().trim();
+                email_str = username_here.getText().toString().trim();
+                password_str = password_here.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email_str)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();

@@ -31,10 +31,10 @@ public class AccountFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel =
                 ViewModelProviders.of(this).get(AccountViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_account, container, false);
+        View root = inflater.inflate(R.layout.fragment_account_c, container, false);
         final TextView textView = root.findViewById(R.id.text_account);
 
-        txtemail=(TextView)root.findViewById(R.id.txtemail);
+        //txtemail=(TextView)root.findViewById(R.id.txtemail);
 
         //Fetching of data done here
         mUser=FirebaseAuth.getInstance().getCurrentUser();      //gives current user UID

@@ -4,8 +4,8 @@
     <string name="title_activity_home_page">HomePage</string>
     <string name="title_image">Upload Pothole Image</string>
     <string name="title_Maps">Locate Pothole</string>
-    <string name="title_notifications">Get your Notification</string>
-    <string name="title_account">Your Account</string>
+    <string name="title_notifications">FeedBack</string>
+    <string name="title_account">Profile</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps2">Map</string>
     <string name="title_activity_maps3">Map</string>
