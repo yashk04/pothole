@@ -19,8 +19,8 @@ function initMap()
     var potholeImages = [];
     var ref = firebase.database().ref('pothole');
     var options = {
-      zoom: 17,
-      center: {lat: 18.4575,lng:73.8508}
+      zoom: 12,
+      center: {lat: 18.5204,lng:73.8567}
     }
 
     var map = new google.maps.Map(document.getElementById('map'), options);
