@@ -1,5 +1,6 @@
 package com.example.pothole.login_signup;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class login extends AppCompatActivity {
     Context mycontext;
     String password_str;
     String email_str;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,9 @@ public class login extends AppCompatActivity {
             public void onClick(View v) {
                email_str = username_here.getText().toString().trim();
                password_str = password_here.getText().toString().trim();
-
+                progressDialog = new ProgressDialog(getApplicationContext());
+                progressDialog.setMessage("Authenticating...");
+               // progressDialog.show();
                 if (TextUtils.isEmpty(email_str)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
@@ -84,6 +88,7 @@ public class login extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Authentication Failure.",
                                     Toast.LENGTH_SHORT).show();
+                            //progressDialog.dismiss();
                         } else {
                             final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             ref.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -94,6 +99,7 @@ public class login extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),"Citizen Login",Toast.LENGTH_LONG).show();
                                         Intent i = new Intent(getApplicationContext(),CitizenHome.class);
                                         startActivity(i);
+                                       // progressDialog.dismiss();
                                     }
                                 }
                                 @Override
@@ -109,9 +115,9 @@ public class login extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),"Contractor Login",Toast.LENGTH_LONG).show();
                                         Intent i = new Intent(getApplicationContext(), ContractorHome.class);
                                         startActivity(i);
+//                                        progressDialog.dismiss();
                                     }
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
 

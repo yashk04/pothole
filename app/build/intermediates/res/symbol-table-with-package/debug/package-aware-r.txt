@@ -1549,8 +1549,10 @@ layout activity_login
 layout activity_main
 layout activity_map_load
 layout activity_maps
+layout activity_ml__connectivity
 layout activity_pothole_info_c
 layout activity_register
+layout activity_temp_calling
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout design_bottom_navigation_item

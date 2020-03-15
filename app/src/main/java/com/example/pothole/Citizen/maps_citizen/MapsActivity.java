@@ -221,9 +221,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         LatLng plot=new LatLng(latitude,longitude);
                         mMap.addMarker(new MarkerOptions().position(plot).title("Potholes reported from here").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))).setTag((potuid));
                         //mMap.moveCamera(CameraUpdateFactory.newLatLng(plot));
-
                     }
-
                 }
 
                 mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {

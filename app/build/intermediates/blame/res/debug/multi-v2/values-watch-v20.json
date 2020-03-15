@@ -4,7 +4,7 @@
             "outputFile": "G:\\pothole\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-2\\files-2.1\\2a9c9d193f2ff245bfcd4f868f30e01f\\jetified-play-services-auth-15.0.1\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-2\\files-2.1\\01420e71d94743ed929289041e5b17e3\\jetified-play-services-auth-15.0.1\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-2\\files-2.1\\6baa1ce929cb6078a68a5b03b3bd41df\\appcompat-1.0.2\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\shubh\\.gradle\\caches\\transforms-2\\files-2.1\\d97474f8f6bd0b4e859655312e2c777c\\appcompat-1.0.2\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

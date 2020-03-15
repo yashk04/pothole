@@ -1,0 +1,24 @@
+body {
+  background: #D4E5E7; /* fallback for old browsers */
+  padding: 10px;
+  font-family: 'Bree Serif', serif;
+}
+
+#map{
+
+    height: 600px;
+    width: 100%;
+}
+
+label {
+  font-size: 18px;
+}
+
+li,p,th {
+  font-size: 18px;
+}
+
+#table {
+  overflow: scroll;
+  height: 500px;
+}

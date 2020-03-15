@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".after_clicking_marker"></activity>
+        <activity android:name=".Citizen.image.tempCallingActivity"></activity>
+        <activity android:name=".Citizen.image.ML_Connectivity" />
+        <activity android:name=".after_clicking_marker" />
         <activity android:name=".Contractor.notifications_C.PotholeInfo_c" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
